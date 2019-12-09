@@ -214,7 +214,7 @@ server <- (function(input, output, session){
     print(p)
   })
   
-  #Linear model of data
+  #Linear regression of data
   
   output$linear <- renderPrint({
     
@@ -230,10 +230,10 @@ server <- (function(input, output, session){
   output$aovSummary = renderTable({
     
   an.obj <- get_data()
-  Variable1 <- an.obj$data[,input$variable1]
-  Variable2 <- an.obj$data[,input$variable2]
-  Variable3 <- an.obj$data[,input$variable3]
-  rev.aov <- anova(lm(Variable1 ~ Variable2 + Variable3 + Variable2:Variable3))
+  Dependent_variable1 <- an.obj$data[,input$variable1]
+  Independent_variable1 <- an.obj$data[,input$variable2]
+  Independent_variable2 <- an.obj$data[,input$variable3]
+  rev.aov <- anova(lm(Dependent_variable1 ~ Independent_variable1 + Independent_variable2 + Independent_variable1:Independent_variable2))
   rev.aov
    }, rownames = TRUE, colnames = TRUE)
  
